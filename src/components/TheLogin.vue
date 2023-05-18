@@ -1,7 +1,7 @@
 <template>
     <div>
         <form @submit.prevent="login" class="login-form">
-            <h2 class="title">Login</h2>
+            <h2 class="title">Login karo bhai</h2>
             <div class="field-wrap">
                 <label for="username">Username:</label>
                 <input type="text" id="username" v-model="username" required>
