@@ -36,7 +36,7 @@ export default {
             })
             console.log(sign)
              if (sign.status === 201) {
-                localStorage.setItem("user-info", JSON.stringify(sign))
+                localStorage.setItem("user-info", JSON.stringify(sign.data))
                 this.$router.push({ name: 'TheHome' })
             }
         }

@@ -38,7 +38,7 @@ export default {
                 username: this.localdataObj.username,
                 password: this.localdataObj.password
             })
-            if (update.status ===200) {
+            if (update.status === 200) {
                 this.$router.push("/")
             }
         }
