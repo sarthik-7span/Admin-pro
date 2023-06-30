@@ -2,7 +2,7 @@ import TheHome from './components/TheHome';
 import TheSignup from './components/TheSignup';
 import TheLogin from './components/TheLogin';
 import TheUpdate from './components/TheUpdate';
-
+import TheCart from './components/TheCart';
 
 const routes = [
     {
@@ -25,6 +25,11 @@ const routes = [
         name: 'TheUpdate',
         component: TheUpdate,
     },
+    {
+        path: '/cart/:id',
+        name: 'TheCart',
+        component: TheCart,
+    }
 ];
 
 export default routes;

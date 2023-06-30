@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h1>Home</h1>
-        <router-link to="/update">Update date</router-link><br/>
+        <h1 class="text-5xl font-bold">Home</h1>
+        <h2 class="text-3xl m-8">Hello <span class="text-red-600 font-semibold">{{ user.username }}</span> Welcome to your dashbord</h2>
         <a @click="remove()" class="logout">Logout</a>
         <table>
             <thead>
@@ -18,8 +18,9 @@
                     <td>{{ x.id }}</td>
                     <td>{{ x.username }}</td>
                     <td>{{ x.password }}</td>
-                    <td><router-link :to='"/update/"+ x.id'>update</router-link></td>
+                    <td><router-link :to="`/update/${x.id}`">update</router-link></td>
                     <td><button @click="deletes(x.id)">delete</button></td>
+                    <td><router-link :to="`/cart/${x.id}`">Add to cart</router-link></td>
                 </tr>
             </tbody>
         </table>
@@ -32,7 +33,8 @@ import axios from "axios";
 export default {
     data() {
         return {
-            username: [],
+            username: {},
+            user: null
         };
     },
     async mounted() {
@@ -43,6 +45,7 @@ export default {
         
         let getdata = await axios.get("http://localhost:3000/users")
         this.username = getdata.data
+        this.user = JSON.parse(localStorage.getItem("user-info"))
     },
     methods: {
         async deletes(x) {
@@ -53,23 +56,7 @@ export default {
         remove() {
             localStorage.removeItem("user-info")
             this.$router.push("/login")
-        }
+        },
     }
 };
 </script>
-<style>
-tr,th,td,table{
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-td{
-    padding: 10px;
-}
-.logout{
-    cursor: pointer;
-    background-color: green;
-    color: white;
-    padding: 10px;
-    display: inline-block;
-}
-</style>
